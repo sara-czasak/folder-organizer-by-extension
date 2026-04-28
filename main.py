@@ -17,6 +17,7 @@ extensions = {
     'doc' : 'document',
     'pdf' : 'document',
     'docx' : 'document',
+    'txt' : 'document',
 }
 
 
