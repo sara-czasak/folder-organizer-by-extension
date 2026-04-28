@@ -1,11 +1,6 @@
-# TODO 1: Get filepath for dir to be organized
-# TODO 2: List all the files in dir
-# TODO 3: Loop through files and find extensions
-# TODO 4: Make dirs for each file type
-# TODO 5: Move files to corresponding dir
-# TODO 6: If file has unknown extension put into dir 'other'
 import os
 from os.path import isfile, join
+import shutil
 
 
 # Extensions dict
@@ -18,7 +13,7 @@ extensions = {
     'mp3' : 'audio',
     'wav' : 'audio',
     'zip' : 'archive',
-    'z7' : 'archive',
+    '7z' : 'archive',
     'doc' : 'document',
     'pdf' : 'document',
     'docx' : 'document',
@@ -37,3 +32,26 @@ while not valid_path:
 
 # Get list of all files in dir excluding subdirs
 list_files = [f for f in os.listdir(path) if isfile(join(path, f))]
+
+
+# loop through files and get extensions
+for file in list_files:
+    extension = file.split('.')[-1].lower()
+    if extension in extensions.keys():
+        new_dir = extensions[extension]
+        new_path = os.path.join(path, new_dir)
+        current_path = os.path.join(path, file)
+        if os.path.isdir(new_path):
+            shutil.move(current_path, new_path)
+        else:
+            os.makedirs(new_path, exist_ok=True)
+            shutil.move(current_path, new_path)
+    else:
+        new_dir = 'other'
+        new_path = os.path.join(path, new_dir)
+        current_path = os.path.join(path, file)
+        if os.path.isdir(new_path):
+            shutil.move(current_path, new_path)
+        else:
+            os.makedirs(new_path, exist_ok=True)
+            shutil.move(current_path, new_path)
