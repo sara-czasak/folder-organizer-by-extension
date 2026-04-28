@@ -55,3 +55,6 @@ for file in list_files:
         else:
             os.makedirs(new_path, exist_ok=True)
             shutil.move(current_path, new_path)
+
+
+print("Folder organized successfully.")
