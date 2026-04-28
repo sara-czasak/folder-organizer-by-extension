@@ -10,11 +10,18 @@ from os.path import isfile, join
 
 # Extensions dict
 extensions = {
-    "images": ["jpg", "jpeg", "png"],
-    "video": ["mp4", "webm"],
-    'audio': ['mp3', 'wav'],
-    'archive': ['zip', '7z'],
-    'document': ['doc', 'docx'],
+    'jpg': 'images',
+    'jpeg': 'images',
+    'png' : 'images',
+    'mp4' : 'video',
+    'webm' : 'video',
+    'mp3' : 'audio',
+    'wav' : 'audio',
+    'zip' : 'archive',
+    'z7' : 'archive',
+    'doc' : 'document',
+    'pdf' : 'document',
+    'docx' : 'document',
 }
 
 
